@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-using manespace std; 
+using namespace std; 
 
 class Persona {
     protected: 
