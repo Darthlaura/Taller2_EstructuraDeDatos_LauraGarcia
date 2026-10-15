@@ -1,4 +1,4 @@
-#include 
+
 #pragma once 
 #include "NodoCola.h"
 
@@ -20,10 +20,10 @@ class   ColaPacientes {
 void encolar(Paciente* paciente); 
 
 
-Persona* desencolar(Paciente* paciente); 
+Paciente* desencolar(); 
 
 
-~ColaPaciente();
+~ColaPacientes();
 
-}
+};
 

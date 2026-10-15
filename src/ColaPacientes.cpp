@@ -1,4 +1,4 @@
-#include  "colaPacientes.h"
+#include  "ColaPacientes.h"
 
 
 
@@ -25,17 +25,17 @@ void  ColaPacientes:: encolar(Paciente* paciente) {
 
      }
 
-Paciente* ColaPaciente:: desencolar(Paciente* paciente) {
+Paciente* ColaPacientes:: desencolar() {
 
     //comprobar si la cola esta vacia
     if (frente == nullptr) {
 
-        return =nullptr;
+        return nullptr;
         
     }
     //guardar la direccion del primer nodo
-    NodoCola* auxiiar = frente;   
-    Paciente* paciente = auxiliar->getPaciente() //conservar el objeto Paciente para guardar su direccion antes de elminar el nodo;
+    NodoCola* auxiliar = frente;   
+    Paciente* paciente = auxiliar->getPaciente(); //conservar el objeto Paciente para guardar su direccion antes de elminar el nodo;
     
     //avanzar al siguiente nodo
     frente = frente->getSiguiente(); 
@@ -45,21 +45,21 @@ Paciente* ColaPaciente:: desencolar(Paciente* paciente) {
         final = nullptr;
     }
 
-     delete auxiliar //eliminamos el nodo; 
+     delete auxiliar; //eliminamos el nodo; 
      return paciente ;
 
 
 }
 
 
-ColaPaciente:: ~ColaPaciente() {
+ColaPacientes:: ~ColaPacientes() {
 
    while(frente != nullptr) {
-     NodoCola* auxiiar = frente; 
+     NodoCola* auxiliar = frente; 
 
      frente = frente->getSiguiente(); 
 
-     delete auxiiar; 
+     delete auxiliar; 
 
 
 
@@ -70,4 +70,3 @@ ColaPaciente:: ~ColaPaciente() {
 }
 
 
-}

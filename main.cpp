@@ -31,9 +31,23 @@ int main() {
     
 
      //prueba de cola 
+     //creando cola Hospital 
+     ColaPacientes cola; 
+     cola.encolar(&paciente); 
+     cout << "Paciente agregado a la cola" << endl; 
+     //retirar al primer paciente 
+
+     Paciente* atendido = cola.desencolar(); 
+
+     if (atendido != nullptr) {
+
+        cout << "Paciente atendido: " << atendido->getNombre() <<endl;
 
 
-     C
+     }
+
+
+
 
      return 0; 
 }
