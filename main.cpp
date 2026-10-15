@@ -3,6 +3,8 @@
 #include <iostream>
 //para mostrar  o leer informacion por consola
 #include "include/Paciente.h"
+#include "include/ColaPacientes.h"
+
 
 using namespace std; 
 
@@ -20,12 +22,18 @@ int main() {
     cout << "Edad : " <<paciente.getEdad() << endl; 
     cout << "Temperatura : " <<paciente.getTemperatura() << endl; 
     cout << "Presion arterial : " <<paciente.getPresionAreterial() <<endl; 
-    cout << "Dolor : " <<paciente.getTrauma() <<endl; 
+    cout << "Dolor : " <<paciente.getDolor() <<endl; 
     cout << "Tpo de dolor : " <<paciente.getTipoDolor() << endl; 
     cout << "Trauma: " << paciente.getTrauma() << endl; 
     cout << "Sintomas neurologicos : " << paciente.getSintomasNeurologicos() << endl; 
     cout << "Requiere cirugia : " << paciente.getRequiereCirugia() << endl; 
     cout << "Dias de hospitalizacion: "  << paciente.getDiasHospitalizacion() << endl; 
     
+
+     //prueba de cola 
+
+
+     C
+
      return 0; 
 }
