@@ -7,40 +7,87 @@ ArbolDecision::ArbolDecision()
     raiz = nullptr;
     construir();
 }
+void ArbolDecision::construir() {
+    // Nodos de pregunta
+    raiz = new NodoDecision("Tiene fiebre alta o dolor intenso", "");
 
-void ArbolDecision::construir()
-{
+    NodoDecision* cirugia =
+        new NodoDecision("Requiere cirugia", "");
 
-    // creamos los nodos de pregunta
-    raiz = new NodoDecision("Edad menor a |14", ""); // este aputa al nodo de edad menor a 14
-    NodoDecision *preguntaTrauma = new NodoDecision("Tiene trauma", "");
+    NodoDecision* trauma =
+        new NodoDecision("Tiene trauma", "");
 
-    // creamos las hojas con los servicion
-    NodoDecision *pediatria = new NodoDecision("", "Pediatria");
+    NodoDecision* neurologia =
+        new NodoDecision("Tiene sintomas neurologicos", "");
 
-    NodoDecision *traumatologia = new NodoDecision("", "traumatologia");
+    NodoDecision* pecho =
+        new NodoDecision("Tiene dolor de pecho", "");
 
-    NodoDecision *medicinaGeneral = new NodoDecision("", "Medicina General");
+    NodoDecision* edad =
+        new NodoDecision("Edad menor que 14", "");
 
-    // conectar los nodos izquierda y derecha
+    NodoDecision* hospitalizacion =
+        new NodoDecision("Necesita hospitalizacion", "");
 
-    raiz->setIzquierdo(pediatria);    // aca se conecta el nodo izquierdon con la decision de pediatra
-    raiz->setDerecho(preguntaTrauma); // aca se conecta el nodo derecgo con la pregunta de si tiene o no trauma
+    // Sí: servicio correspondiente. No: siguiente pregunta.
+    raiz->setIzquierdo(new NodoDecision("", "Urgencias"));
+    raiz->setDerecho(cirugia);
 
-    preguntaTrauma->setIzquierdo(traumatologia);
-    preguntaTrauma->setDerecho(medicinaGeneral);
+    cirugia->setIzquierdo(new NodoDecision("", "Cirugia"));
+    cirugia->setDerecho(trauma);
+
+    trauma->setIzquierdo(new NodoDecision("", "Traumatologia"));
+    trauma->setDerecho(neurologia);
+
+    neurologia->setIzquierdo(new NodoDecision("", "Neurologia"));
+    neurologia->setDerecho(pecho);
+
+    pecho->setIzquierdo(new NodoDecision("", "Cardiologia"));
+    pecho->setDerecho(edad);
+
+    edad->setIzquierdo(new NodoDecision("", "Pediatria"));
+    edad->setDerecho(hospitalizacion);
+
+    hospitalizacion->setIzquierdo(
+        new NodoDecision("", "Hospitalizacion")
+    );
+
+    hospitalizacion->setDerecho(
+        new NodoDecision("", "Medicina General")
+    );
 }
 
-bool ArbolDecision::evaluarCondicion(const NodoDecision *nodo, const Paciente &paciente) const
-{
 
-    if (nodo->getPregunta() == "Edad menor que 14")
-    {
+bool ArbolDecision::evaluarCondicion( const NodoDecision* nodo, const Paciente& paciente) const {
+    string pregunta = nodo->getPregunta();
+
+    if (pregunta == "Tiene fiebre alta o dolor intenso") {
+        return paciente.getTemperatura() >= 38.5
+            || paciente.getDolor() >= 8;
+    }
+
+    if (pregunta == "Requiere cirugia") {
+        return paciente.getRequiereCirugia();
+    }
+
+    if (pregunta == "Tiene trauma") {
+        return paciente.getTrauma();
+    }
+
+    if (pregunta == "Tiene sintomas neurologicos") {
+        return paciente.getSintomasNeurologicos();
+    }
+
+    if (pregunta == "Tiene dolor de pecho") {
+        return paciente.getTipoDolor() == "pecho";
+    }
+
+    if (pregunta == "Edad menor que 14") {
         return paciente.getEdad() < 14;
     }
-    if (nodo->getPregunta() == "Tiene trauma")
-    {
-        return paciente.getTrauma();
+
+    if (pregunta == "Necesita hospitalizacion") {
+        return paciente.getDiasHospitalizacion() >= 2;
     }
 
     throw std::logic_error("Pregunta no reconocida");
@@ -107,12 +154,15 @@ void ArbolDecision::preorden(const NodoDecision *nodo) const
     preorden(nodo->getDerecho());
 }
 
-ArbolDecision::~ArbolDecision() {
+ArbolDecision::~ArbolDecision()
+{
     liberar(raiz);
 }
 
-void ArbolDecision::liberar(NodoDecision* nodo) {
-    if (nodo == nullptr) {
+void ArbolDecision::liberar(NodoDecision *nodo)
+{
+    if (nodo == nullptr)
+    {
         return;
     }
 
@@ -120,4 +170,61 @@ void ArbolDecision::liberar(NodoDecision* nodo) {
     liberar(nodo->getDerecho());
 
     delete nodo;
+}
+
+void ArbolDecision::mostrarInorden() const
+{
+
+    inorden(raiz);
+}
+
+void ArbolDecision::inorden(const NodoDecision *nodo) const
+{
+    if (nodo == nullptr)
+    {
+
+        return;
+    }
+
+    inorden(nodo->getIzquierdo());
+    if (nodo->esHoja())
+    {
+
+        cout << "Servicio: " << nodo->getServicio() << endl;
+    }
+    else
+    {
+
+        cout << "Pregunta: " << nodo->getPregunta() << endl;
+    }
+
+    inorden(nodo->getDerecho());
+}
+
+void ArbolDecision::mostrarPostorden() const
+{
+    postorden(raiz);
+}
+
+void ArbolDecision::postorden(const NodoDecision *nodo) const
+{
+
+    if (nodo == nullptr)
+    {
+
+        return;
+    }
+
+    postorden(nodo->getIzquierdo());
+    postorden(nodo->getDerecho());
+    if (nodo->esHoja())
+    {
+
+        cout << "Servicio: " << nodo->getServicio() << endl;
+    }
+    else
+    {
+
+        cout << "Pregunta: " << nodo->getPregunta() << endl;
+    }
 }

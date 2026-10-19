@@ -65,10 +65,49 @@ int main()
 
     cout << "Todos los pacientes fueron retirados de la cola" << endl;
 
-
     ArbolDecision arbol;
+    cout << "\nServicio de Ana: "
+     << arbol.clasificar(paciente) << endl;
     cout << "=== RECORRIDO PREORDEN ===" << endl;
     arbol.mostrarPreorden();
+    cout << "\n=== RECORRIDO INORDEN ===" << endl;
+    arbol.mostrarInorden();
+
+    cout << "\n=== RECORRIDO POSTORDEN ===" << endl;
+    arbol.mostrarPostorden();
+
+    Paciente pruebas[] = {
+    Paciente(10, "Caso urgencias", 30, 39.0, 120,
+             3, "otro", false, false, false, 0),
+
+    Paciente(11, "Caso cirugia", 30, 37.0, 120,
+             3, "otro", false, false, true, 0),
+
+    Paciente(12, "Caso trauma", 30, 37.0, 120,
+             3, "extremidad", true, false, false, 0),
+
+    Paciente(13, "Caso neurologia", 30, 37.0, 120,
+             3, "cabeza", false, true, false, 0),
+
+    Paciente(14, "Caso cardiologia", 30, 37.0, 120,
+             3, "pecho", false, false, false, 0),
+
+    Paciente(15, "Caso pediatria", 10, 37.0, 120,
+             3, "otro", false, false, false, 0),
+
+    Paciente(16, "Caso hospitalizacion", 30, 37.0, 120,
+             3, "otro", false, false, false, 3),
+
+    Paciente(17, "Caso medicina general", 30, 37.0, 120,
+             3, "otro", false, false, false, 0)
+};
+
+cout << "\n=== PRUEBAS DE CLASIFICACION ===" << endl;
+
+for (int i = 0; i < 8; i++) {
+    cout << pruebas[i].getNombre() << ": "
+         << arbol.clasificar(pruebas[i]) << endl;
+}
 
     return 0;
 }
