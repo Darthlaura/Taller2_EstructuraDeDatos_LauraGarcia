@@ -134,7 +134,7 @@ void ArbolDecision::preorden(const NodoDecision *nodo) const
     if (nodo == nullptr)
     {
 
-        return;
+        return; //termina la llamada que ejecuta
     }
 
     // mostrar el nodo actual
@@ -149,8 +149,9 @@ void ArbolDecision::preorden(const NodoDecision *nodo) const
         cout << "Pregunta: " << nodo->getPregunta() << endl;
     }
     // recorrer los hijos
-
+    //arbol izquierdo
     preorden(nodo->getIzquierdo());
+    //arbol derecho 
     preorden(nodo->getDerecho());
 }
 
@@ -208,7 +209,7 @@ void ArbolDecision::mostrarPostorden() const
 
 void ArbolDecision::postorden(const NodoDecision *nodo) const
 {
-
+//izquierda, derecha, raiz 
     if (nodo == nullptr)
     {
 
