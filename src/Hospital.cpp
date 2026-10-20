@@ -214,3 +214,47 @@ Paciente *Hospital::buscarPorNombre(const string &nombre)
 
     return hospitalizacion.buscarPorNombre(nombre);
 }
+
+bool Hospital::eliminarPaciente(int id)
+{
+    // revisar si el paciente existe en los AVL.
+    Paciente* paciente = buscarPorId(id);
+
+    if (paciente == nullptr)
+    {
+        return false;
+    }
+
+    // obtener el servicio del paciente.
+    string servicio = decision.clasificar(*paciente);
+
+    // seleccionar el AVL correspondiente.
+    ArbolAVL* arbol = obtenerArbol(servicio);
+
+    // eliminar el nodo correspondiente al ID.
+    arbol->eliminar(id);
+
+    return true;
+}
+
+void Hospital::mostrarEstadoAVL(const string& servicio)
+{
+    ArbolAVL* arbol = obtenerArbol(servicio);
+
+    cout << "\n=== AVL: " << servicio << " ===" << endl;
+
+    cout << "\nRecorrido inorden:" << endl;
+    arbol->mostrarInorden();
+
+    cout << "\nRecorrido preorden:" << endl;
+    arbol->mostrarPreorden();
+
+    cout << "\nRecorrido postorden:" << endl;
+    arbol->mostrarPostorden();
+
+    cout << "\nAltura del arbol: "
+         << arbol->getAlturaArbol() << endl;
+
+    cout << "Factor de balance de la raiz: "
+         << arbol->getBalanceRaiz() << endl;
+}

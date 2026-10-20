@@ -27,11 +27,12 @@ private:
 
 public:
     Hospital();
-
+    void mostrarEstadoAVL(const std::string& servicio);
     void agregarPaciente(Paciente* paciente);
     void atenderPacientes();
     void mostrarDepartamentos();
 
     Paciente* buscarPorId(int id);
     Paciente* buscarPorNombre(const std::string& nombre);
+    bool eliminarPaciente(int id);
 };
