@@ -64,10 +64,7 @@ int main()
             }
             else
             {
-                int cantidad = lector.cargarArchivo(
-                    "data/pacientes.txt",
-                    hospital
-                );
+                int cantidad = lector.cargarArchivo( "data/pacientes.txt",hospital);
 
                 if (cantidad > 0)
                 {
@@ -128,8 +125,7 @@ int main()
             string nombre;
             getline(cin, nombre);
 
-            Paciente* paciente =
-                hospital.buscarPorNombre(nombre);
+            Paciente* paciente = hospital.buscarPorNombre(nombre);
 
             if (paciente != nullptr)
             {
