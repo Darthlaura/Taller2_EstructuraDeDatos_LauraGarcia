@@ -15,8 +15,7 @@ private:
     void construir();
 
     //revisar si un paciente cumple con la condicion de un nodo
-    bool evaluarCondicion(
-        const NodoDecision *nodo, const Paciente &paciente) const;
+    bool evaluarCondicion( const NodoDecision *nodo, const Paciente &paciente) const;
 
     void preorden(const NodoDecision* nodo) const; 
     void inorden(const NodoDecision* nodo) const; 

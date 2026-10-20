@@ -31,7 +31,10 @@ int NodoAVL::getAltura() const
 {
     return altura;
 }
-
+void NodoAVL::setPaciente(Paciente* paciente)
+{
+    this->paciente = paciente;
+}
 void NodoAVL::setIzquierdo(NodoAVL* izquierdo)
 {
     this->izquierdo = izquierdo;

@@ -8,26 +8,20 @@ ArbolDecision::ArbolDecision()
     construir();
 }
 void ArbolDecision::construir() {
-    // Nodos de pregunta
+    // nodos de pregunta
     raiz = new NodoDecision("Tiene fiebre alta o dolor intenso", "");
 
-    NodoDecision* cirugia =
-        new NodoDecision("Requiere cirugia", "");
+    NodoDecision* cirugia = new NodoDecision("Requiere cirugia", "");
 
-    NodoDecision* trauma =
-        new NodoDecision("Tiene trauma", "");
+    NodoDecision* trauma = new NodoDecision("Tiene trauma", "");
 
-    NodoDecision* neurologia =
-        new NodoDecision("Tiene sintomas neurologicos", "");
+    NodoDecision* neurologia = new NodoDecision("Tiene sintomas neurologicos", "");
 
-    NodoDecision* pecho =
-        new NodoDecision("Tiene dolor de pecho", "");
+    NodoDecision* pecho = new NodoDecision("Tiene dolor de pecho", "");
 
-    NodoDecision* edad =
-        new NodoDecision("Edad menor que 14", "");
+    NodoDecision* edad = new NodoDecision("Edad menor que 14", "");
 
-    NodoDecision* hospitalizacion =
-        new NodoDecision("Necesita hospitalizacion", "");
+    NodoDecision* hospitalizacion = new NodoDecision("Necesita hospitalizacion", "");
 
     // Sí: servicio correspondiente. No: siguiente pregunta.
     raiz->setIzquierdo(new NodoDecision("", "Urgencias"));
@@ -58,12 +52,10 @@ void ArbolDecision::construir() {
 }
 
 
-bool ArbolDecision::evaluarCondicion( const NodoDecision* nodo, const Paciente& paciente) const {
-    string pregunta = nodo->getPregunta();
+bool ArbolDecision::evaluarCondicion( const NodoDecision* nodo, const Paciente& paciente) const { string pregunta = nodo->getPregunta();
 
     if (pregunta == "Tiene fiebre alta o dolor intenso") {
-        return paciente.getTemperatura() >= 38.5
-            || paciente.getDolor() >= 8;
+        return paciente.getTemperatura() >= 38.5 || paciente.getDolor() >= 8;
     }
 
     if (pregunta == "Requiere cirugia") {

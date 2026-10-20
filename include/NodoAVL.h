@@ -13,7 +13,7 @@ private:
     int altura; //variable para conocer la altura del arbol 
 
 public:
-
+    
     NodoAVL(Paciente* paciente);
 
     Paciente* getPaciente() const;
@@ -22,7 +22,7 @@ public:
     NodoAVL* getDerecho() const;
 
     int getAltura() const;
-
+    void setPaciente(Paciente* paciente);
     void setIzquierdo(NodoAVL* izquierdo);
     void setDerecho(NodoAVL* derecho);
 
