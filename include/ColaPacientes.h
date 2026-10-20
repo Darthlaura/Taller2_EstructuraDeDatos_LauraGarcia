@@ -14,6 +14,8 @@ class   ColaPacientes {
  public : 
  //constructor 
  ColaPacientes(); 
+ ColaPacientes(const ColaPacientes&) = delete;
+ ColaPacientes& operator=(const ColaPacientes&) = delete;
 
 // metodo encolar : Recibe un objeto de tipo paciente y lo incorpora al final de la cola 
 

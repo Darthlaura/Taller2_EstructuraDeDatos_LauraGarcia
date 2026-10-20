@@ -10,8 +10,8 @@ using namespace std;
 
 int main()
 {
-    // Crear el lector y el hospital
-    // El lector debe existir mientras el hospital
+    // crear el lector y el hospital
+    // el lector debe existir mientras el hospital
     // utilice los pacientes que fueron cargados.
     LectorPacientes lector;
     Hospital hospital;
@@ -102,8 +102,7 @@ int main()
             int id;
             char caracterExtra;
 
-            if (!(convertirId >> id) ||
-                (convertirId >> caracterExtra))
+            if (!(convertirId >> id) || (convertirId >> caracterExtra))
             {
                 cout << "ID invalido." << endl;
                 continue;
@@ -113,8 +112,7 @@ int main()
 
             if (paciente != nullptr)
             {
-                cout << "Paciente encontrado: "
-                     << paciente->getNombre() << endl;
+                cout << "Paciente encontrado: " << paciente->getNombre() << endl;
             }
             else
             {
@@ -135,8 +133,7 @@ int main()
 
             if (paciente != nullptr)
             {
-                cout << "Paciente encontrado. ID: "
-                     << paciente->getId() << endl;
+                cout << "Paciente encontrado. ID: " << paciente->getId() << endl;
             }
             else
             {
@@ -157,8 +154,7 @@ int main()
             int id;
             char caracterExtra;
 
-            if (!(convertirId >> id) ||
-                (convertirId >> caracterExtra))
+            if (!(convertirId >> id) || (convertirId >> caracterExtra))
             {
                 cout << "ID invalido." << endl;
                 continue;
@@ -168,8 +164,7 @@ int main()
 
             if (eliminado)
             {
-                cout << "Paciente eliminado correctamente."
-                     << endl;
+                cout << "Paciente eliminado correctamente." << endl;
             }
             else
             {
@@ -201,8 +196,7 @@ int main()
             int numeroServicio;
             char caracterExtra;
 
-            if (!(convertirServicio >> numeroServicio) ||
-                (convertirServicio >> caracterExtra))
+            if (!(convertirServicio >> numeroServicio) ||  (convertirServicio >> caracterExtra))
             {
                 cout << "Servicio invalido." << endl;
                 continue;
@@ -255,11 +249,10 @@ int main()
         // OPCION 0: SALIR
         else if (opcion == 0)
         {
-            cout << "Saliendo del Hospital Marmaja..."
-                 << endl;
+            cout << "Saliendo del Hospital Marmaja..." << endl;
         }
 
-        // OPCION NO RECONOCIDA
+       
         else
         {
             cout << "Opcion no valida." << endl;

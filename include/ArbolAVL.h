@@ -38,13 +38,14 @@ private:
     void preorden(NodoAVL* nodo) const;
     void postorden(NodoAVL* nodo) const;
 
-    // liberar memeoria
+    // liberar memoria
     void liberar(NodoAVL* nodo);
 
 public:
 
     ArbolAVL();
-
+    ArbolAVL(const ArbolAVL&) = delete;
+ArbolAVL& operator=(const ArbolAVL&) = delete;
     void insertar(Paciente* paciente);
     void eliminar(int id);
 

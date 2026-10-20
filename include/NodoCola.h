@@ -11,7 +11,6 @@ class NodoCola {
 
    //metodo para obtener la direccion del paciente almacenado en el nodo 
    Paciente* getPaciente();
-   //falta el destructor 
    
    //metodo para obtener el siguiente nodo
    NodoCola* getSiguiente(); 
